@@ -1,0 +1,17 @@
+<button class="k-tag k-tag--{{ size }}">
+  <k-checkbox
+    *ngIf="clickable"
+    [size]="size"
+    (clickCheckBox)="onChecked()"
+  ></k-checkbox>
+  <k-avatar [imageUrl]="avatarUrl" *ngIf="avatarUrl !== ''"></k-avatar>
+  <!-- <k-icon name="{{iconName}}" category="{{iconCategory}}"></k-icon> -->
+  <ng-content></ng-content>
+  <span *ngIf="value !== undefined"> {{ value }}</span>
+  <k-icon
+    *ngIf="closable"
+    name="xClose"
+    category="general"
+    (click)="onCloseClick()"
+  ></k-icon>
+</button>

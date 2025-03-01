@@ -1,0 +1,90 @@
+@use '../styles/all';
+
+:host-context(k-tag) {
+  .k-tag {
+    border-radius: 6px;
+    border: 1px solid;
+    transition: background-color ease-in 0.1s, box-shadow ease-in 0.2s;
+    @include all.shadow-xs;
+    background-color: all.$base-white;
+    border-color: all.$gray-300;
+    color: all.$gray-700;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    k-checkbox {
+      margin-right: all.$space-1 + 2px;
+    }
+  
+    k-avatar {
+      margin-right: all.$space-1;
+      width: 16px;
+      height: 16px;
+    }
+  
+    k-icon {
+      display: flex;
+      align-items: center;
+      margin-left: all.$space-1 + 2px;
+      ::ng-deep svg > path {
+          stroke: all.$gray-400;
+      }
+    }
+  
+    span {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #f2f4f7;
+      border-radius: all.$space-1 - 1px;
+      margin-left: all.$space-2 - 2px;
+    }
+  }
+  
+  .k-tag--sm {
+    padding: all.$space-1 - 1px all.$space-2 - 2px;
+    @include all.text-sm-medium;
+    line-height: normal !important;
+    ::ng-deep {
+      k-icon > svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+    span {
+      padding: 0px all.$space-1;
+    }
+  }
+  
+  .k-tag--md {
+    padding: all.$space-1 all.$space-2 + 1px;
+    @include all.text-md-medium;
+    line-height: 20px !important;
+    ::ng-deep {
+      k-icon > svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+    span {
+      padding: 0px all.$space-1 + 1px;
+    }
+  }
+  
+  .k-tag--lg {
+    padding: all.$space-1 + 2px all.$space-3 - 2px;
+    @include all.text-lg-medium;
+    line-height: 22px !important;
+    ::ng-deep {
+      k-icon > svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  
+    span {
+      padding: 0px all.$space-1 + 2px;
+    }
+  }
+}
