@@ -1,0 +1,41 @@
+<div class="k-multiselect-container" #multiselectRef>
+  <div class="k-multiselct-tags">
+    <div class="search-icon" *ngIf="isSearchIconEnable">
+      <k-icon name="searchLg" category="general" class="search-icon"></k-icon>
+    </div>
+    <div class="k-tags-list">
+      <k-tag
+        [size]="'sm'"
+        [closable]="true"
+        [avatarUrl]="tag.image"
+        [clickable]="false"
+        (closeTag)="onRemoveSelectedItem(tag)"
+        *ngFor="let tag of selectedTags"
+        >{{ tag.shortValue ? tag.shortValue : tag.value }}
+      </k-tag>
+      <input
+        #input
+        (keydown)="onKeyDown($event)"
+        (focus)="onInputFocus()"
+        placeholder="Search"
+        [formControl]="dropdownInptTxt"
+        autocomplete="off"
+      />
+    </div>
+  </div>
+</div>
+
+<ng-template cdk-portal>
+  <div class="multiselect-options-container">
+    <ng-template *ngTemplateOutlet="optionTemplate"></ng-template>
+  </div>
+</ng-template>
+
+<ng-template #optionTemplate>
+  <k-multi-select-option
+    *ngFor="
+      let option of multiSelectOptions | filter: 'value':dropdownInptTxt.value
+    "
+    [multiSelectOption]="option"
+  ></k-multi-select-option>
+</ng-template>

@@ -1,0 +1,64 @@
+@use '../../styles/all';
+
+$halfSpace: 2px;
+
+:host {
+  .k-option-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: all.$space-12;
+    // line-height: all.$space-12;
+    padding: $halfSpace (all.$space-1 + $halfSpace);
+    background: all.$base-white;
+
+    .k-option-content {
+      width: calc(100% - 20px);
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: (all.$space-2 + $halfSpace) (all.$space-2 + $halfSpace)
+        (all.$space-2 + $halfSpace) (all.$space-2 - $halfSpace);
+      cursor: pointer;
+      k-avatar {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px
+      }
+      .title {
+        @include all.text-md-medium;
+        color: all.$gray-900;
+      }
+      .sub-title {
+        @include all.text-md-regular;
+        color: all.$gray-600;
+      }
+      .sub-title::before{
+        content: '@';
+        margin-left: all.$space-1;
+      }
+    }
+    ::ng-deep k-icon {
+      width: 25px;
+      svg {
+        width: all.$space-5;
+        height: all.$space-5;
+        color: all.$primary-600;
+      }
+    }
+  }
+  &:hover,
+  &.selected,
+  &.active {
+    .k-option-container {
+      background: all.$gray-50;
+    }
+  }
+  &:hover,
+  &.active {
+    @media screen and (-ms-high-contrast: active) {
+      background-color: all.$gray-50;
+    }
+  }
+}
